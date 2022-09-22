@@ -12,7 +12,7 @@ export default function Principal({ navigation }) {
                 <>
                     <View style={estilos.fundo} />
                     <View style={estilos.imagemArea}>
-                        <Image source={{ uri: 'https://avatars.githubusercontent.com/u/54721131?v=4' }} style={estilos.imagem} />
+                        <Image source={{ uri: 'https://avatars.githubusercontent.com/u/90421959?s=400&u=fcc70c1d707f897155bdaa10991d79992b1fc429&v=4' }} style={estilos.imagem} />
                     </View>
                     <Text style={estilos.textoNome}>Nome do usuario</Text>
                     <Text style={estilos.textoEmail}>Email do usuario</Text>
@@ -33,13 +33,13 @@ export default function Principal({ navigation }) {
                     </TouchableOpacity>
                 </>
 
-                <TextInput
+                <TextInput /* busca usuarios */
                     placeholder="Busque por um usuário"
                     autoCapitalize="none"
                     style={estilos.entrada}
                 />
 
-                <TouchableOpacity style={estilos.botao}>
+                <TouchableOpacity style={estilos.botao} /* botão de busca */>   
                     <Text style={estilos.textoBotao}>
                         Buscar
                     </Text>
