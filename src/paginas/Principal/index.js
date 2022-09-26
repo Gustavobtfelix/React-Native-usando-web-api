@@ -12,7 +12,9 @@ export default function Principal({ navigation }) {
             response => {
                 console.log(response.data);
                 }
-            )
+            ).catch(error => {
+                console.log(error);
+            })
      }
 
     return (
