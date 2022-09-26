@@ -9,18 +9,22 @@ export default function Principal({ navigation }) {
     const [usuario, setUsuario] = useState({});
 
      async function busca(){
-        const resultado = await buscaUsuario();
+        const resultado = await buscaUsuario(nomeUsuario);
+        setNomeUsuario('');
         if (resultado){
             setUsuario(resultado);
         }
         else{
             Alert.alert('Usuario nao encontrado');
+            setUsuario({});
         }
      }
 
     return (
         <ScrollView>
             <View style={estilos.container}>
+                {
+                    usuario?.login &&
                 <>
                     <View style={estilos.fundo} />
                     <View style={estilos.imagemArea}>
@@ -44,11 +48,14 @@ export default function Principal({ navigation }) {
                         </Text>
                     </TouchableOpacity>
                 </>
+    }
 
                 <TextInput /* busca usuarios */
                     placeholder="Busque por um usuário"
                     autoCapitalize="none"
                     style={estilos.entrada}
+                    value={nomeUsuario}
+                    onChangeText={setNomeUsuario}
                 />
 
                 <TouchableOpacity style={estilos.botao}
