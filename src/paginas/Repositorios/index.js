@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, FlatList, TouchableOpacity, TextInput } from 'react-native';
 import {useIsFocused} from '@react-navigation/native';
 import estilos from './estilos';
 import { pegarRepositoriosDoUsuario } from '../../servicos/Requisicoes/repositorios';
 
 export default function Repositorios({ route, navigation }) {
     const [repo, setRepo] = useState([]);
+    const [buscaRepositorio, setBuscaRepositorio] = useState('');
     const estaNaTela = useIsFocused(); //verifica se a tela está em foco
 
     useEffect(async () => {
@@ -17,6 +18,19 @@ export default function Repositorios({ route, navigation }) {
     return (
         <View style={estilos.container}>
                 <Text style={estilos.repositoriosTexto}>{repo.length} repositórios criados</Text>
+                {
+                    repo?.length > 0  &&
+                    <>
+                    <TextInput /* busca usuarios */
+                    placeholder="Busque por um repositório"
+                    autoCapitalize="none"
+                    style={estilos.repositorio}
+                    value={buscaRepositorio}
+                    onChangeText={setBuscaRepositorio}
+                    />
+                    </>
+                    
+                }
                 <TouchableOpacity 
                     style={estilos.botao}
                     onPress={() => navigation.navigate('CriarRepositorio')}
