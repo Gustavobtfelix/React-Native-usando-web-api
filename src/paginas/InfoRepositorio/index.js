@@ -1,10 +1,30 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 import estilos from './estilos';
+import { salvarRepositoriosDoUsuario } from '../../servicos/Requisicoes/repositorios';
 
-export default function InfoRepositorio({ route, navigation }) {
-    const [nome, setNome] = useState('');
-    const [data, setData] = useState('');
+export default function InfoRepositorio({ route, navigation }) { //route traz os parametros do navigate
+    const [nome, setNome] = useState(route.params.item.name);
+    const [data, setData] = useState(route.params.item.data);
+    
+    async function salvar(){
+        const resultado = await salvarRepositoriosDoUsuario(
+            route.params.item.postId,
+            nome,
+            data,
+            route.params.item.id
+            );
+
+        if(resultado === 'sucesso'){
+            Alert.alert('Repositório salvo com sucesso');
+            navigation.pop()
+        }
+        else{
+            Alert.alert('Erro ao salvar repositório');
+        }
+        
+        
+    }
 
     return (
         <View style={estilos.container}>
@@ -12,14 +32,19 @@ export default function InfoRepositorio({ route, navigation }) {
                 placeholder="Nome do repositório"
                 autoCapitalize="none"
                 style={estilos.entrada}
+                value={nome}
+                onChangeText={setNome}
             />
             <TextInput
                 placeholder="Data de criação"
                 autoCapitalize="none"
                 style={estilos.entrada}
+                value={data}
+                onChangeText={setData}
             />
             <TouchableOpacity 
                 style={estilos.botao} 
+                onPress={salvar}
             >
                 <Text style={estilos.textoBotao}>
                     Salvar
