@@ -12,12 +12,38 @@ export async function pegarRepositoriosDoUsuario(id){
 }
 
 export async function salvarRepositoriosDoUsuario(postId, name, data, id){
-    try{
+    try{        
         await api.put(`/repos/${id}`, {
             name: name,
             data: data,
             postId: postId,
             id: id
+        });
+        return 'sucesso';
+    }
+    catch(error){
+        console.log(error);
+        return 'erro';
+    }
+}
+
+
+export async function deletarRepositoriosDoUsuario(id){
+    try{
+        await api.delete(`/repos/${id}`);
+        return 'sucesso';
+    }
+    catch(error){
+        console.log(error);
+        return 'erro';
+    }
+}
+
+export async function inserirRepositoriosDoUsuario(name, data){
+    try{
+        await api.post(`/repos`, {
+            name: name,
+            data: data
         });
         return 'sucesso';
     }
