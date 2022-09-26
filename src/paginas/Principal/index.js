@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import { Text, View, Image, TouchableOpacity, TextInput, Alert, ScrollView } from 'react-native';
 import estilos from './estilos';
 import api from '../../servicos/api';
+import { buscaUsuario } from '../../servicos/Requisicoes/usuarios';
 
 export default function Principal({ navigation }) {
     const [nomeUsuario, setNomeUsuario] = useState('');
     const [usuario, setUsuario] = useState({});
 
-     function Busca(){
-        api.get('/users').then(
-            response => {
-                console.log(response.data);
-                }
-            ).catch(error => {
-                console.log(error);
-            })
+     async function busca(){
+        const resultado = await buscaUsuario();
+        if (resultado){
+            setUsuario(resultado);
+        }
+        else{
+            Alert.alert('Usuario nao encontrado');
+        }
      }
 
     return (
@@ -23,17 +24,17 @@ export default function Principal({ navigation }) {
                 <>
                     <View style={estilos.fundo} />
                     <View style={estilos.imagemArea}>
-                        <Image source={{ uri: 'https://avatars.githubusercontent.com/u/90421959?s=400&u=fcc70c1d707f897155bdaa10991d79992b1fc429&v=4' }} style={estilos.imagem} />
+                        <Image source={{ uri: usuario.avatar_url }} style={estilos.imagem} />
                     </View>
-                    <Text style={estilos.textoNome}>Nome do usuario</Text>
-                    <Text style={estilos.textoEmail}>Email do usuario</Text>
+                    <Text style={estilos.textoNome}>{usuario.name}</Text>
+                    <Text style={estilos.textoEmail}>{usuario.email}</Text>
                     <View style={estilos.seguidoresArea}>
                         <View style={estilos.seguidores}>
-                            <Text style={estilos.seguidoresNumero}>30</Text>
+                            <Text style={estilos.seguidoresNumero}>{usuario.followers}</Text>
                             <Text style={estilos.seguidoresTexto}>Seguidores</Text>
                         </View>
                         <View style={estilos.seguidores}>
-                            <Text style={estilos.seguidoresNumero}>40</Text>
+                            <Text style={estilos.seguidoresNumero}>{usuario.following}</Text>
                             <Text style={estilos.seguidoresTexto}>Seguindo</Text>
                         </View>
                     </View>
@@ -51,7 +52,7 @@ export default function Principal({ navigation }) {
                 />
 
                 <TouchableOpacity style={estilos.botao}
-                                  onPress={Busca} /* botão de busca */>   
+                                  onPress={busca} /* botão de busca */>   
                     <Text style={estilos.textoBotao}>
                         Buscar
                     </Text>
