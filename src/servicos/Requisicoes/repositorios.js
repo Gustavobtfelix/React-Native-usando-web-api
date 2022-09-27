@@ -1,4 +1,6 @@
+import { FlatList, Text, TouchableOpacity } from "react-native";
 import api from "../api";
+import estilos from "../../paginas/Repositorios/estilos";
 
 export async function pegarRepositoriosDoUsuario(id){
     try{                        //get busca dados, post envia dados, put atualiza dados, delete deleta dados
@@ -50,5 +52,39 @@ export async function inserirRepositoriosDoUsuario(name, data){
     catch(error){
         console.log(error);
         return 'erro';
+    }
+}
+
+
+//Consulta valores que já foram retornados pela API
+export function VerificaLista({nomeRep, repo, navigation}) {
+    const lista = []
+    
+    for (const value of repo) {
+        if (value.name.includes(nomeRep)) {
+            lista.push(value)
+        }
+    }
+    if (lista.length === 0) {
+        return <Text style={estilos.textoVazio}>
+                Nenhum repositório encontrado
+            </Text>   
+    }
+    else {
+        return (
+            <FlatList
+                data={lista}
+                keyExtractor={lista => lista.id}
+                renderItem={({item}) => (
+                    <TouchableOpacity
+                        style={estilos.repositorio}
+                        onPress={() => navigation.navigate('InfoRepositorio', {item})}
+                    >
+                        <Text style={estilos.repositorioNome}>{item.name}</Text>
+                        <Text style={estilos.repositorioData}>{item.data}</Text>
+                    </TouchableOpacity>
+                )}
+            />
+        )
     }
 }

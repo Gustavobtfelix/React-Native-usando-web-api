@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList, TouchableOpacity, TextInput } from 'react-native';
 import {useIsFocused} from '@react-navigation/native';
 import estilos from './estilos';
-import { pegarRepositoriosDoUsuario } from '../../servicos/Requisicoes/repositorios';
+import { pegarRepositoriosDoUsuario, VerificaLista } from '../../servicos/Requisicoes/repositorios';
+
 
 export default function Repositorios({ route, navigation }) {
     const [repo, setRepo] = useState([]);
@@ -33,11 +34,12 @@ export default function Repositorios({ route, navigation }) {
                 }
                 <TouchableOpacity 
                     style={estilos.botao}
-                    onPress={() => navigation.navigate('CriarRepositorio')}
+                    onPress={() => navigation.navigate('CriarRepositorio', {item})}
                 >
                     <Text style={estilos.textoBotao}>Adicionar novo repositório</Text>
                 </TouchableOpacity>
-
+                {
+                    buscaRepositorio.length === 0 &&
                 <FlatList 
                     data={repo}
                     style={{width: '100%'}}
@@ -52,6 +54,15 @@ export default function Repositorios({ route, navigation }) {
                         </TouchableOpacity>
                     )}
                 />
+                }
+                {
+                    buscaRepositorio.length > 0 &&
+                    <VerificaLista 
+                    nomeRep={buscaRepositorio}
+                    repo={repo}
+                    navigation={navigation}
+                    />
+                }
         </View>
     );
 }
