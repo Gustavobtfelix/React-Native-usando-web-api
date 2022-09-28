@@ -29,10 +29,13 @@ export async function salvarRepositoriosDoUsuario(postId, name, data, id){
     }
 }
 
-
-export async function deletarRepositoriosDoUsuario(id){
+export async function criarRepositoriosDoUsuario(postId, name, data){
     try{
-        await api.delete(`/repos/${id}`);
+        await api.post(`/repos`, {
+            name: name,
+            data: data,
+            postId: postId
+        });
         return 'sucesso';
     }
     catch(error){
@@ -41,12 +44,9 @@ export async function deletarRepositoriosDoUsuario(id){
     }
 }
 
-export async function inserirRepositoriosDoUsuario(name, data){
+export async function deletarRepositoriosDoUsuario(id){
     try{
-        await api.post(`/repos`, {
-            name: name,
-            data: data
-        });
+        await api.delete(`/repos/${id}`);
         return 'sucesso';
     }
     catch(error){
