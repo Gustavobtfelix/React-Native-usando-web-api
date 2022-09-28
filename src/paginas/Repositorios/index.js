@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {useIsFocused} from '@react-navigation/native';
-import { Text, View, FlatList, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, FlatList, TouchableOpacity, TextInput, Linking } from 'react-native';
 import estilos from './estilos';
 import { pegarRepositoriosDoUsuario, VerificaLista } from '../../servicos/Requisicoes/repositorios';
 
@@ -47,10 +47,10 @@ export default function Repositorios({ route, navigation }) {
                     renderItem={({item}) => (
                         <TouchableOpacity
                             style={estilos.repositorio}
-                            onPress={() => navigation.navigate('InfoRepositorio', {item})}
+                            onPress={() => Linking.openURL(item.html_url)}
                         >
                             <Text style={estilos.repositorioNome}>{item.name}</Text>
-                            <Text style={estilos.repositorioData}>{item.data}</Text>
+                            <Text style={estilos.repositorioData}>{item.html_url}</Text>
                         </TouchableOpacity>
                     )}
                 />

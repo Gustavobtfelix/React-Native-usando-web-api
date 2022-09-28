@@ -2,7 +2,7 @@ import axios from "axios";
 import credenciais from "./credenciais";
 
 const api = axios.create({
-    baseURL: credenciais.ipLocal
+    baseURL: credenciais.rota
 })
 
 export default api;

@@ -1,10 +1,10 @@
-import { FlatList, Text, TouchableOpacity } from "react-native";
+import { FlatList, Linking, Text, TouchableOpacity } from "react-native";
 import api from "../api";
 import estilos from "../../paginas/Repositorios/estilos";
 
-export async function pegarRepositoriosDoUsuario(id){
+export async function pegarRepositoriosDoUsuario(login){
     try{                        //get busca dados, post envia dados, put atualiza dados, delete deleta dados
-        const resultado = await api.get(`/repos?postId=${id}`);
+        const resultado = await api.get(`/users/${login}/repos`);
         return resultado.data;
     }
     catch(error){
@@ -78,10 +78,10 @@ export function VerificaLista({nomeRep, repo, navigation}) {
                 renderItem={({item}) => (
                     <TouchableOpacity
                         style={estilos.repositorio}
-                        onPress={() => navigation.navigate('InfoRepositorio', {item})}
+                        onPress={() => Linking.openURL(item.html_url)}
                     >
                         <Text style={estilos.repositorioNome}>{item.name}</Text>
-                        <Text style={estilos.repositorioData}>{item.data}</Text>
+                        <Text style={estilos.repositorioData}>{item.html_url}</Text>
                     </TouchableOpacity>
                 )}
             />

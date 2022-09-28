@@ -10,8 +10,9 @@ export async function buscaUsuario(nomeUsuario){
     //         console.log(error);
     //     })
     try{ //await so funciona dentro de uma funcao async, ele espera a resposta da api e depois executa o codigo
-        const resultado  = await api.get(`/users?login=${nomeUsuario}`);
-        return resultado.data[0]
+        const resultado  = await api.get(`/users/${nomeUsuario}`);
+        console.log(resultado.login)
+        return resultado.data
     }
     catch(error){
         console.log(error)
