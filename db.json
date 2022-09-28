@@ -17,15 +17,6 @@
       "email": "natalia@email.com",
       "followers": 51,
       "following": 7
-    },
-    {
-      "login": "natalia",
-      "avatar_url": "https://avatars.githubusercontent.com/u/9091491?v=4",
-      "name": "natalia teste",
-      "email": "nataliateste@email.com",
-      "followers": 51,
-      "following": 7,
-      "id": 3
     }
   ],
   "repos": [
@@ -47,11 +38,18 @@
       "data": "1 de jan. de 2021",
       "postId": 1
     },
+    
     {
-      "name": "2048 evolution",
+      "id": 5,
+      "name": "Alura_cursos",
       "data": "1 de jan. de 2021",
-      "postId": 2,
-      "id": 1
+      "postId": 1
+    },
+    {
+      "id": 1,
+      "name": "2048evolution",
+      "data": "1 de jan. de 2021",
+      "postId": 2
     },
     {
       "id": 2,
@@ -64,12 +62,6 @@
       "name": "alura-react-native-comecando-do-zero",
       "data": "1 de jan. de 2021",
       "postId": 2
-    },
-    {
-      "id": 5,
-      "name": "Alura_cursos",
-      "data": "1 de jan. de 2021",
-      "postId": 1
     }
   ]
 }
