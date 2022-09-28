@@ -38,7 +38,6 @@
       "data": "1 de jan. de 2021",
       "postId": 1
     },
-    
     {
       "id": 5,
       "name": "Alura_cursos",
@@ -46,19 +45,19 @@
       "postId": 1
     },
     {
-      "id": 1,
-      "name": "2048evolution",
+      "name": "2048 evolution",
       "data": "1 de jan. de 2021",
-      "postId": 2
+      "postId": 2,
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "alura-pikachu",
+      "name": "alura-cursos",
       "data": "1 de jan. de 2021",
-      "postId": 2
+      "postId": 2,
+      "id": 6
     },
     {
-      "id": 3,
+      "id": 7,
       "name": "alura-react-native-comecando-do-zero",
       "data": "1 de jan. de 2021",
       "postId": 2

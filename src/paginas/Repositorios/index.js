@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, FlatList, TouchableOpacity, TextInput } from 'react-native';
 import {useIsFocused} from '@react-navigation/native';
+import { Text, View, FlatList, TouchableOpacity, TextInput } from 'react-native';
 import estilos from './estilos';
 import { pegarRepositoriosDoUsuario, VerificaLista } from '../../servicos/Requisicoes/repositorios';
 
