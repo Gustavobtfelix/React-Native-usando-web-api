@@ -59,9 +59,14 @@ $ expo start
 ```
 
 
-Espero que você utilize ao máximo deste projeto para se aprimorar! E se quiser dar um salve, estou lá no LinkedIn [André Oliveira Cunha](https://www.linkedin.com/in/andr%C3%A9-oliveira-cunha-b26b3a156/). :wave: 
-
 [nodejs]: https://nodejs.org/
 [expo]: https://docs.expo.dev/
 [rn]: https://facebook.github.io/react-native/
 [yarn]: https://yarnpkg.com/
+
+
+📚 Amostra final do projeto
+
+
+https://user-images.githubusercontent.com/90421959/193479409-48932fd9-ffd3-4cf7-8893-32a3e0ed001a.mp4
+
